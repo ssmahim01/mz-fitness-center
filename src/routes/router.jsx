@@ -22,11 +22,11 @@ const router = createBrowserRouter([
             {
                 path: "/allSchedule",
                 element: <AllSchedule></AllSchedule>,
-                loader: () => fetch("http://localhost:3500/schedules")
+                loader: () => fetch("https://mz-fitness-server.vercel.app/schedules")
             },
             {
                 path: "/updateSchedule/:id",
-                loader: ({params}) => fetch(`http://localhost:3500/schedules/${params.id}`),
+                loader: ({params}) => fetch(`https://mz-fitness-server.vercel.app/schedules/${params.id}`),
                 element: <UpdateSchedule></UpdateSchedule>
             },
             {

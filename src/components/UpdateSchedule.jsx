@@ -30,7 +30,7 @@ const UpdateSchedule = () => {
       time,
     };
 
-    fetch(`http://localhost:3500/schedules/${id}`, {
+    fetch(`https://mz-fitness-server.vercel.app/schedules/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

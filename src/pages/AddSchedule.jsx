@@ -32,7 +32,7 @@ const AddSchedule = () => {
       title, day, formatHour, formattedDate, isConfirm
     };
 
-    fetch("http://localhost:3500/schedules", {
+    fetch("https://mz-fitness-server.vercel.app/schedules", {
       method: "POST",
       headers: {
         'content-type': 'application/json'
