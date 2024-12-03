@@ -3,14 +3,14 @@ import DatePicker from "react-datepicker";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-// const formatTime = (date) => {
-//     let hours = date.getHours();
-//     const minutes = String(date.getMinutes()).padStart(2, "0");
-//     const seconds = String(date.getSeconds()).padStart(2, "0");
-//     const time = hours >= 12 ? "PM" : "AM";
-//     hours = hours % 12 || 12;
-//     return `${hours}:${minutes}:${seconds} ${time}`;
-//   };
+const formatTime = (date) => {
+    let hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    const time = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+    return `${hours}:${minutes}:${seconds} ${time}`;
+  };
 
 const UpdateSchedule = () => {
   const schedule = useLoaderData();
@@ -19,12 +19,10 @@ const UpdateSchedule = () => {
   const [date, setDate] = useState(schedule?.formattedDate);
   const [day, setDay] = useState(schedule?.day);
   const [time, setTime] = useState(schedule?.formatHour);
-  const time2 = new Date();
+  // console.log({time:schedule?.formatHour});
 
   const handleUpdateSchedule = (e) => {
     e.preventDefault();
-
-
     const updateSchedule = {
       title,
       day,
@@ -117,8 +115,10 @@ const UpdateSchedule = () => {
                 <DatePicker
                   className="input input-bordered w-full"
                   value={time}
-                  onChange={(time2) => setTime(time2)}
-                  selected={time}
+                  onChange={(newTime) => {
+                    const format = formatTime(newTime);
+                    setTime(format);
+                  }}
                   showTimeSelect
                   showTimeSelectOnly
                   timeIntervals={15}
